@@ -65,14 +65,14 @@ export default {
         if (response.ok) {
           const json = await response.json();
           return { confirmRequired: !json.user.confirmed };
-        } else if (response.status === 400 || response.status === 422) {
+        } else if (response.status === 409) {
           const json = await response.json();
           throw new Error(json.message);
         } else {
-          throw new Error(response.status + " " + response.statusText);
+          throw new Error(process.env.VUE_APP_ERROR_MSG);
         }
       } catch (error) {
-        commit("setError", process.env.VUE_APP_ERROR_MSG);
+        commit("setError", error.message);
         throw error;
       } finally {
         commit("setLoading", false);
@@ -100,10 +100,10 @@ export default {
           const json = await response.json();
           throw new Error(json.message);
         } else {
-          throw new Error(response.status + " " + response.statusText);
+          throw new Error(process.env.VUE_APP_ERROR_MSG);
         }
       } catch (error) {
-        commit("setError", process.env.VUE_APP_ERROR_MSG);
+        commit("setError", error.message);
         throw error;
       } finally {
         commit("setLoading", false);
