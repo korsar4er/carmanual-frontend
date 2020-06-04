@@ -4,7 +4,7 @@
     <v-app-bar app color="rgba(0,0,0,0.7)">
       <v-toolbar-title>
         <v-icon left>mdi-hammer-wrench</v-icon>
-        <router-link to="/" tag="span" style="cursor: pointer">Car manual</router-link>
+        <router-link to="/" tag="span" style="cursor: pointer">REPAIR PEUGEOT</router-link>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
